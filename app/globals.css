@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-manrope: 'Manrope', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #0a0907;
+  color: #f0ebe2;
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #141210; }
+::-webkit-scrollbar-thumb { background: #2a2520; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a342d; }
+
+/* Prose overrides for markdown rendering */
+.prose { color: #f0ebe2; }
+.prose h1, .prose h2, .prose h3, .prose h4 { color: #c9a96e; }
+.prose strong { color: #f0ebe2; }
+.prose a { color: #c9a96e; }
+.prose ul > li::marker { color: #8a7f72; }
+.prose ol > li::marker { color: #8a7f72; }
+.prose hr { border-color: #2a2520; }
+.prose blockquote { border-left-color: #c9a96e; color: #b5a99a; }
+.prose code { color: #c9a96e; background: #1e1b17; padding: 2px 6px; border-radius: 3px; }
+.prose pre { background: #1e1b17; border: 1px solid #2a2520; }
+
+/* Kanban drag states */
+.drag-over { background: #252119 !important; border-color: #c9a96e !important; }
+.dragging { opacity: 0.4; }
+
+/* Score button active state */
+.score-btn-active {
+  background: #c9a96e !important;
+  color: #0a0907 !important;
+}
+
+/* Transitions */
+.transition-brand {
+  transition: all 0.15s ease;
+}
