@@ -3,9 +3,11 @@ export default function FitScoreBadge({ score }: { score: number | null }) {
     return <span className="text-brand-stone text-xs">—</span>
   }
   const color =
-    score >= 75 ? 'text-brand-gold' : score >= 50 ? 'text-brand-stone-light' : 'text-brand-stone'
+    score >= 75 ? 'text-brand-gold font-semibold' :
+    score >= 50 ? 'text-brand-stone-light font-medium' :
+    'text-brand-stone'
   return (
-    <span className={`text-xs font-semibold tabular-nums ${color}`}>
+    <span className={`text-xs tabular-nums ${color}`}>
       {score}
     </span>
   )

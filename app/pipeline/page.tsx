@@ -10,12 +10,12 @@ import FitScoreBadge from '@/components/FitScoreBadge'
 
 const STAGES: PipelineStage[] = ['Applied', 'Interviewed', 'Offered', 'Hired', 'Rejected']
 
-const STAGE_STYLES: Record<PipelineStage, { header: string; border: string }> = {
-  Applied:    { header: 'text-blue-300', border: 'border-blue-800/30' },
-  Interviewed:{ header: 'text-brand-gold', border: 'border-brand-gold/30' },
-  Offered:    { header: 'text-emerald-300', border: 'border-emerald-800/30' },
-  Hired:      { header: 'text-green-300', border: 'border-green-800/30' },
-  Rejected:   { header: 'text-brand-stone', border: 'border-brand-border' },
+const STAGE_STYLES: Record<PipelineStage, { headerColor: string; borderColor: string }> = {
+  Applied:     { headerColor: '#0C1C2C', borderColor: '#BFCFE0' },
+  Interviewed: { headerColor: '#CE9F55', borderColor: '#E8D5A3' },
+  Offered:     { headerColor: '#2D6A4F', borderColor: '#A8D5B5' },
+  Hired:       { headerColor: '#1B4332', borderColor: '#95D5B2' },
+  Rejected:    { headerColor: '#7A7570', borderColor: '#E8E2D6' },
 }
 
 export default function PipelinePage() {
@@ -95,8 +95,8 @@ export default function PipelinePage() {
     <div className="p-8">
       <div className="mb-8">
         <h1
-          className="text-xl text-brand-gold tracking-[0.15em] uppercase mb-1"
-          style={{ fontFamily: '"Copperplate Gothic Bold", "Copperplate Gothic", Copperplate, serif' }}
+          className="text-brand-forest text-2xl tracking-[0.15em] uppercase mb-1"
+          style={{ fontFamily: "'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif" }}
         >
           Pipeline
         </h1>
@@ -112,16 +112,28 @@ export default function PipelinePage() {
           return (
             <div
               key={stage}
-              className={`flex-shrink-0 w-64 flex flex-col rounded border transition-brand ${
-                isOver ? 'border-brand-gold bg-brand-surface-3' : `${styles.border} bg-brand-surface`
-              }`}
+              className="flex-shrink-0 w-64 flex flex-col rounded-md transition-brand"
+              style={{
+                border: `1px solid ${isOver ? '#CE9F55' : styles.borderColor}`,
+                backgroundColor: isOver ? '#EDEAE3' : '#FFFFFF',
+              }}
               onDragOver={e => handleDragOver(e, stage)}
               onDragLeave={() => setDragOverStage(null)}
               onDrop={e => handleDrop(e, stage)}
             >
               {/* Column header */}
-              <div className="px-4 py-3 border-b border-brand-border flex items-center justify-between">
-                <span className={`text-xs font-semibold uppercase tracking-wider ${styles.header}`}>
+              <div
+                className="px-4 py-3 flex items-center justify-between"
+                style={{ borderBottom: `1px solid ${styles.borderColor}` }}
+              >
+                <span
+                  className="text-xs font-semibold uppercase tracking-wider"
+                  style={{
+                    fontFamily: "'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif",
+                    color: styles.headerColor,
+                    letterSpacing: '0.12em',
+                  }}
+                >
                   {stage}
                 </span>
                 <span className="text-brand-stone text-xs tabular-nums">{cards.length}</span>
@@ -136,11 +148,16 @@ export default function PipelinePage() {
                     onDragStart={e => handleDragStart(e, c.id)}
                     onDragEnd={handleDragEnd}
                     onClick={() => router.push(`/candidates/${c.id}`)}
-                    className={`bg-brand-surface-2 border border-brand-border rounded p-3 cursor-grab active:cursor-grabbing hover:border-brand-border-light transition-brand select-none ${
-                      draggingId === c.id ? 'opacity-40' : ''
-                    }`}
+                    className="rounded-md p-3 cursor-grab active:cursor-grabbing select-none transition-brand"
+                    style={{
+                      backgroundColor: '#F6F1E8',
+                      border: '1px solid #E8E2D6',
+                      opacity: draggingId === c.id ? 0.4 : 1,
+                    }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = '#D5CFC4' }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = '#E8E2D6' }}
                   >
-                    <div className="text-brand-text text-sm font-medium mb-1 truncate">
+                    <div className="text-brand-forest text-sm font-medium mb-1 truncate">
                       {c.full_name}
                     </div>
                     <div className="text-brand-stone text-xs truncate mb-2">

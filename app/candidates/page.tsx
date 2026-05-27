@@ -40,8 +40,8 @@ function CandidatesInner() {
       <div className="flex items-start justify-between mb-8">
         <div>
           <h1
-            className="text-xl text-brand-gold tracking-[0.15em] uppercase mb-1"
-            style={{ fontFamily: '"Copperplate Gothic Bold", "Copperplate Gothic", Copperplate, serif' }}
+            className="text-brand-forest text-2xl tracking-[0.15em] uppercase mb-1"
+            style={{ fontFamily: "'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif" }}
           >
             Candidates
           </h1>
@@ -49,7 +49,18 @@ function CandidatesInner() {
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="px-4 py-2 bg-brand-gold text-brand-bg text-sm font-medium rounded hover:bg-brand-gold-light transition-brand"
+          style={{
+            padding: '9px 20px',
+            backgroundColor: '#011B03',
+            color: '#F6F1E8',
+            fontFamily: "'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif",
+            fontSize: 11,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            border: 'none',
+            borderRadius: 4,
+            cursor: 'pointer',
+          }}
         >
           Add Candidate
         </button>
@@ -61,18 +72,20 @@ function CandidatesInner() {
           <button
             key={s}
             onClick={() => setStageFilter(s)}
-            className={`px-3 py-1.5 rounded text-xs font-medium transition-brand ${
-              stageFilter === s
-                ? 'bg-brand-gold text-brand-bg'
-                : 'bg-brand-surface border border-brand-border text-brand-stone hover:text-brand-text'
-            }`}
+            className="px-3 py-1.5 rounded text-xs font-medium transition-brand"
+            style={{
+              fontFamily: "'ManropeST', 'Manrope', sans-serif",
+              backgroundColor: stageFilter === s ? '#CE9F55' : '#FFFFFF',
+              color: stageFilter === s ? '#F6F1E8' : '#7A7570',
+              border: stageFilter === s ? '1px solid #CE9F55' : '1px solid #E8E2D6',
+            }}
           >
             {s}
           </button>
         ))}
       </div>
 
-      <div className="bg-brand-surface border border-brand-border rounded overflow-hidden">
+      <div className="bg-brand-surface border border-brand-border rounded-md overflow-hidden">
         {loading ? (
           <div className="p-8 text-center text-brand-stone text-sm">Loading…</div>
         ) : candidates.length === 0 ? (
@@ -80,12 +93,12 @@ function CandidatesInner() {
         ) : (
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-brand-border">
-                <th className="text-left px-4 py-3 text-brand-stone text-xs uppercase tracking-wider font-medium">Name</th>
-                <th className="text-left px-4 py-3 text-brand-stone text-xs uppercase tracking-wider font-medium">Role</th>
-                <th className="text-left px-4 py-3 text-brand-stone text-xs uppercase tracking-wider font-medium">Location</th>
-                <th className="text-left px-4 py-3 text-brand-stone text-xs uppercase tracking-wider font-medium">Stage</th>
-                <th className="text-right px-4 py-3 text-brand-stone text-xs uppercase tracking-wider font-medium">Fit</th>
+              <tr className="border-b border-brand-border bg-brand-surface-2">
+                <th className="text-left px-4 py-3 text-brand-stone text-[11px] uppercase tracking-wider font-medium">Name</th>
+                <th className="text-left px-4 py-3 text-brand-stone text-[11px] uppercase tracking-wider font-medium">Role</th>
+                <th className="text-left px-4 py-3 text-brand-stone text-[11px] uppercase tracking-wider font-medium">Location</th>
+                <th className="text-left px-4 py-3 text-brand-stone text-[11px] uppercase tracking-wider font-medium">Stage</th>
+                <th className="text-right px-4 py-3 text-brand-stone text-[11px] uppercase tracking-wider font-medium">Fit</th>
               </tr>
             </thead>
             <tbody>
@@ -97,7 +110,7 @@ function CandidatesInner() {
                     i < candidates.length - 1 ? 'border-b border-brand-border' : ''
                   }`}
                 >
-                  <td className="px-4 py-3 text-brand-text font-medium">{c.full_name}</td>
+                  <td className="px-4 py-3 text-brand-forest font-medium">{c.full_name}</td>
                   <td className="px-4 py-3 text-brand-stone">
                     {c.current_title || (c.job_descriptions as { role_title?: string } | null)?.role_title || '—'}
                   </td>

@@ -10,29 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          bg: '#0a0907',
-          gold: '#c9a96e',
-          'gold-light': '#dfc28a',
-          'gold-dim': '#8a6a3a',
-          text: '#f0ebe2',
-          stone: '#8a7f72',
-          'stone-light': '#b5a99a',
-          surface: '#141210',
-          'surface-2': '#1e1b17',
-          'surface-3': '#252119',
-          border: '#2a2520',
-          'border-light': '#3a342d',
+          bg: '#F6F1E8',         // ivory — main background
+          forest: '#011B03',     // forest green — sidebar, primary buttons
+          gold: '#CE9F55',       // gold — accents, scores, highlights
+          'gold-light': '#D9B577',
+          'gold-dim': '#A07830',
+          text: '#2C2A25',       // near-black body text
+          stone: '#7A7570',      // muted / secondary text
+          'stone-light': '#5C5753',
+          surface: '#FFFFFF',    // white card backgrounds
+          'surface-2': '#F6F1E8', // ivory surface
+          'surface-3': '#EDEAE3', // slightly darker ivory
+          border: '#E8E2D6',
+          'border-light': '#D5CFC4',
+          burgundy: '#44050A',
+          navy: '#0C1C2C',
         },
       },
       fontFamily: {
         copperplate: [
+          'CopperplateGothicST',
           '"Copperplate Gothic Bold"',
           '"Copperplate Gothic"',
           'Copperplate',
-          '"Copperplate Gothic Light"',
           'serif',
         ],
-        manrope: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
+        manrope: ['ManropeST', 'Manrope', 'sans-serif'],
       },
     },
   },

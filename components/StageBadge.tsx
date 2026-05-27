@@ -1,11 +1,11 @@
 import type { PipelineStage } from '@/types'
 
 const stageColors: Record<PipelineStage, string> = {
-  Applied: 'text-blue-300 bg-blue-900/20 border-blue-800/40',
-  Interviewed: 'text-brand-gold bg-brand-gold/10 border-brand-gold/20',
-  Offered: 'text-emerald-300 bg-emerald-900/20 border-emerald-800/40',
-  Hired: 'text-green-300 bg-green-900/20 border-green-800/40',
-  Rejected: 'text-brand-stone bg-brand-surface-2 border-brand-border',
+  Applied:     'text-brand-navy bg-blue-50 border-blue-200',
+  Interviewed: 'text-brand-gold bg-amber-50 border-amber-200',
+  Offered:     'text-emerald-700 bg-emerald-50 border-emerald-200',
+  Hired:       'text-green-700 bg-green-50 border-green-200',
+  Rejected:    'text-brand-stone bg-gray-100 border-gray-200',
 }
 
 export default function StageBadge({ stage }: { stage: PipelineStage }) {

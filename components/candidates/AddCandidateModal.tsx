@@ -16,6 +16,29 @@ interface Props {
   }
 }
 
+const inputStyle = {
+  width: '100%',
+  padding: '9px 12px',
+  border: '1px solid #E8E2D6',
+  borderRadius: 4,
+  fontFamily: "'ManropeST', 'Manrope', sans-serif",
+  fontSize: 13,
+  color: '#2C2A25',
+  backgroundColor: '#FFFFFF',
+  outline: 'none',
+  boxSizing: 'border-box' as const,
+}
+
+const labelStyle = {
+  display: 'block',
+  fontFamily: "'ManropeST', 'Manrope', sans-serif",
+  color: '#7A7570',
+  fontSize: 10,
+  letterSpacing: '0.1em',
+  textTransform: 'uppercase' as const,
+  marginBottom: 6,
+}
+
 export default function AddCandidateModal({ onClose, onCreated, prefill }: Props) {
   const [form, setForm] = useState({
     full_name: prefill?.full_name || '',
@@ -63,87 +86,74 @@ export default function AddCandidateModal({ onClose, onCreated, prefill }: Props
   }
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-brand-surface border border-brand-border rounded w-full max-w-lg">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-brand-border">
-          <h2 className="text-brand-text text-sm font-semibold">Add Candidate</h2>
-          <button onClick={onClose} className="text-brand-stone hover:text-brand-text text-lg leading-none">×</button>
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4" style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>
+      <div className="w-full max-w-lg rounded-md shadow-xl" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E2D6' }}>
+        <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid #E8E2D6' }}>
+          <h2
+            style={{
+              fontFamily: "'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif",
+              color: '#011B03',
+              fontSize: 13,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              margin: 0,
+            }}
+          >
+            Add Candidate
+          </h2>
+          <button onClick={onClose} style={{ color: '#7A7570', fontSize: 20, lineHeight: 1, background: 'none', border: 'none', cursor: 'pointer' }}>×</button>
         </div>
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Full Name *</label>
-              <input
-                type="text"
-                value={form.full_name}
+              <label style={labelStyle}>Full Name *</label>
+              <input type="text" value={form.full_name}
                 onChange={e => setForm(p => ({ ...p, full_name: e.target.value }))}
-                className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-                placeholder="Jiya Agarwal"
-              />
+                style={inputStyle} placeholder="Jiya Agarwal" />
             </div>
             <div>
-              <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Email</label>
-              <input
-                type="email"
-                value={form.email}
+              <label style={labelStyle}>Email</label>
+              <input type="email" value={form.email}
                 onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-                placeholder="jiya@example.com"
-              />
+                style={inputStyle} placeholder="jiya@example.com" />
             </div>
             <div>
-              <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Phone</label>
-              <input
-                type="text"
-                value={form.phone}
+              <label style={labelStyle}>Phone</label>
+              <input type="text" value={form.phone}
                 onChange={e => setForm(p => ({ ...p, phone: e.target.value }))}
-                className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-              />
+                style={inputStyle} />
             </div>
             <div>
-              <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Location</label>
-              <input
-                type="text"
-                value={form.location}
+              <label style={labelStyle}>Location</label>
+              <input type="text" value={form.location}
                 onChange={e => setForm(p => ({ ...p, location: e.target.value }))}
-                className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-                placeholder="New Delhi"
-              />
+                style={inputStyle} placeholder="New Delhi" />
             </div>
             <div>
-              <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Current Title</label>
-              <input
-                type="text"
-                value={form.current_title}
+              <label style={labelStyle}>Current Title</label>
+              <input type="text" value={form.current_title}
                 onChange={e => setForm(p => ({ ...p, current_title: e.target.value }))}
-                className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-              />
+                style={inputStyle} />
             </div>
             <div>
-              <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Current Company</label>
-              <input
-                type="text"
-                value={form.current_company}
+              <label style={labelStyle}>Current Company</label>
+              <input type="text" value={form.current_company}
                 onChange={e => setForm(p => ({ ...p, current_company: e.target.value }))}
-                className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-              />
+                style={inputStyle} />
             </div>
           </div>
           <div>
-            <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">LinkedIn URL</label>
-            <input
-              type="url"
-              value={form.linkedin_url}
+            <label style={labelStyle}>LinkedIn URL</label>
+            <input type="url" value={form.linkedin_url}
               onChange={e => setForm(p => ({ ...p, linkedin_url: e.target.value }))}
-              className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
-            />
+              style={inputStyle} />
           </div>
           <div>
-            <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Pipeline Stage</label>
+            <label style={labelStyle}>Pipeline Stage</label>
             <select
               value={form.pipeline_stage}
               onChange={e => setForm(p => ({ ...p, pipeline_stage: e.target.value as PipelineStage }))}
-              className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold"
+              style={{ ...inputStyle, appearance: 'none' as const }}
             >
               {(['Applied', 'Interviewed', 'Offered', 'Hired', 'Rejected'] as PipelineStage[]).map(s => (
                 <option key={s} value={s}>{s}</option>
@@ -151,27 +161,46 @@ export default function AddCandidateModal({ onClose, onCreated, prefill }: Props
             </select>
           </div>
           <div>
-            <label className="block text-brand-stone text-xs mb-1.5 uppercase tracking-wider">Notes</label>
+            <label style={labelStyle}>Notes</label>
             <textarea
               value={form.notes}
               onChange={e => setForm(p => ({ ...p, notes: e.target.value }))}
               rows={3}
-              className="w-full bg-brand-surface-2 border border-brand-border rounded px-3 py-2 text-brand-text text-sm focus:outline-none focus:border-brand-gold resize-none"
+              style={{ ...inputStyle, resize: 'none' }}
             />
           </div>
-          {error && <div className="text-red-400 text-xs">{error}</div>}
+          {error && <div style={{ color: '#44050A', fontSize: 12, fontFamily: "'ManropeST', 'Manrope', sans-serif" }}>{error}</div>}
           <div className="flex justify-end gap-3 pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-brand-stone text-sm hover:text-brand-text transition-brand"
+              style={{
+                padding: '8px 16px',
+                fontFamily: "'ManropeST', 'Manrope', sans-serif",
+                color: '#7A7570',
+                fontSize: 13,
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+              }}
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="px-4 py-2 bg-brand-gold text-brand-bg text-sm font-medium rounded hover:bg-brand-gold-light transition-brand disabled:opacity-50"
+              style={{
+                padding: '9px 20px',
+                backgroundColor: saving ? '#5C5753' : '#011B03',
+                color: '#F6F1E8',
+                fontFamily: "'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif",
+                fontSize: 11,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                border: 'none',
+                borderRadius: 4,
+                cursor: saving ? 'not-allowed' : 'pointer',
+              }}
             >
               {saving ? 'Creating…' : 'Create Candidate'}
             </button>

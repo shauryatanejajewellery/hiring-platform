@@ -2,50 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-manrope: 'Manrope', sans-serif;
+/* ─── Brand Fonts ─────────────────────────────────────────── */
+@font-face {
+  font-family: 'CopperplateGothicST';
+  src: url('/fonts/Copperplate-Gothic-Std-32-BC.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: 'ManropeST';
+  src: url('/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Base ────────────────────────────────────────────────── */
 * {
   box-sizing: border-box;
 }
 
 html, body {
-  background: #0a0907;
-  color: #f0ebe2;
-  font-family: var(--font-manrope), 'Manrope', sans-serif;
+  background: #F6F1E8;
+  color: #2C2A25;
+  font-family: 'ManropeST', 'Manrope', sans-serif;
   min-height: 100vh;
 }
 
-/* Scrollbar */
+/* ─── Scrollbar ───────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #141210; }
-::-webkit-scrollbar-thumb { background: #2a2520; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3a342d; }
+::-webkit-scrollbar-track { background: #F6F1E8; }
+::-webkit-scrollbar-thumb { background: #E8E2D6; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D5CFC4; }
 
-/* Prose overrides for markdown rendering */
-.prose { color: #f0ebe2; }
-.prose h1, .prose h2, .prose h3, .prose h4 { color: #c9a96e; }
-.prose strong { color: #f0ebe2; }
-.prose a { color: #c9a96e; }
-.prose ul > li::marker { color: #8a7f72; }
-.prose ol > li::marker { color: #8a7f72; }
-.prose hr { border-color: #2a2520; }
-.prose blockquote { border-left-color: #c9a96e; color: #b5a99a; }
-.prose code { color: #c9a96e; background: #1e1b17; padding: 2px 6px; border-radius: 3px; }
-.prose pre { background: #1e1b17; border: 1px solid #2a2520; }
+/* ─── Prose (markdown) ────────────────────────────────────── */
+.prose { color: #2C2A25; }
+.prose h1, .prose h2, .prose h3, .prose h4 { color: #011B03; font-family: 'CopperplateGothicST', 'Copperplate Gothic Bold', Copperplate, serif; }
+.prose strong { color: #2C2A25; }
+.prose a { color: #CE9F55; }
+.prose ul > li::marker { color: #7A7570; }
+.prose ol > li::marker { color: #7A7570; }
+.prose hr { border-color: #E8E2D6; }
+.prose blockquote { border-left-color: #CE9F55; color: #5C5753; }
+.prose code { color: #011B03; background: #EDEAE3; padding: 2px 6px; border-radius: 3px; }
+.prose pre { background: #EDEAE3; border: 1px solid #E8E2D6; }
 
-/* Kanban drag states */
-.drag-over { background: #252119 !important; border-color: #c9a96e !important; }
+/* ─── Kanban drag states ──────────────────────────────────── */
+.drag-over { background: #EDEAE3 !important; border-color: #CE9F55 !important; }
 .dragging { opacity: 0.4; }
 
-/* Score button active state */
+/* ─── Score button active state ───────────────────────────── */
 .score-btn-active {
-  background: #c9a96e !important;
-  color: #0a0907 !important;
+  background: #CE9F55 !important;
+  color: #F6F1E8 !important;
 }
 
-/* Transitions */
+/* ─── Transitions ─────────────────────────────────────────── */
 .transition-brand {
   transition: all 0.15s ease;
+}
+
+/* ─── Select / Input light-mode overrides ─────────────────── */
+select option {
+  background: #FFFFFF;
+  color: #2C2A25;
 }
